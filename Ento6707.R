@@ -5,8 +5,6 @@ str(ento)
 head(ento)
 tail(ento)
 
-
-
 ento$species <- as.factor(ento$species)
 ento$distance_km <- as.factor(ento$distance_km)
 
