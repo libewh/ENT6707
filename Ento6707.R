@@ -16,12 +16,19 @@ levels(ento$plantgen)
 str(ento)
 summary(ento)
 
-# add column for species count
+
+########   PLOTS   ##########################################
+#############################################################
+
+# bees by distance
+ggplot(ento) +
+  aes(x = distance_km, fill = species) +
+  geom_bar(position = "stack") +
+  xlab("distance from apiary") +
+  ylab("count")
+
+# add column for species count 
 df <- ento %>% group_by(species) %>%   mutate(count_name_occurr = n())
-
-# add column for flower count
-df2 <- ento %>% group_by(plantgen) %>%   mutate(plantgenoccur = n())
-
 
 # bees by count
 ggplot(df) +
@@ -30,12 +37,8 @@ ggplot(df) +
   xlab("bee species") +
   ylab("count")
 
-# bees by distance
-ggplot(ento) +
-  aes(x = distance_km, fill = species) +
-  geom_bar(position = "stack") +
-  xlab("distance from apiary") +
-  ylab("count")
+# add column for flower count
+df2 <- ento %>% group_by(plantgen) %>%   mutate(plantgenoccur = n())
 
 # bees by flowers
 ggplot(df2) +
